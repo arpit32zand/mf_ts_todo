@@ -1,0 +1,67 @@
+.container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    background-color: rgb(230, 225, 236);
+    padding: .5rem .8rem .5rem .5rem;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+.disableContainer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    background-color: rgb(190, 190, 190);
+    padding: .5rem .8rem .5rem .5rem;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+.dataContainer {
+    display: flex;
+    align-items: center;
+    gap: .8rem;
+    width: 80%;
+}
+
+.iconContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: .4rem;
+    border-radius: 5px;
+    background-color: #d2d0d0;
+    cursor: pointer;
+}
+
+.itemText {
+    width: 50%;
+}
+
+.doneItemText {
+    text-decoration: line-through;
+    color: rgb(81, 81, 79);
+    width: 50%;
+}
+
+.fieldContainer {
+    width: 100%;
+    display: flex;
+    gap: 1rem
+}
+
+.fieldContainer:first-child .fieldContainer:last-child  {
+    width: 25% !important;
+}
+
+.icon {
+    scale: 1.4;
+    color: rgb(134, 134, 127);
+}
+
+.check {
+    scale: 1.2;
+}

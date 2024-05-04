@@ -1,0 +1,8 @@
+.field {
+    border-color: rgba(0, 0, 0, 0.23);
+    outline: none;
+    border-radius: 4px;
+    padding: .6rem .5rem;
+    font-size: .9rem;
+    background-color: transparent;
+}
