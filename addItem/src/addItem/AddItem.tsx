@@ -19,17 +19,23 @@ const AddItem: React.FC = () => {
 
 	const [note, setNote] = useState<{ value: string; error: boolean }>({ value: '', error: false })
 	const [title, setTitle] = useState<{ value: string; error: boolean }>({ value: '', error: false })
+	const [helper, setHelper] = useState<1 | 2>(1)
 
 	const validate = (): boolean => {
-        const nameRegex = /^[a-zA-Z\s'-]*$/;
+        const nameRegex = /^[a-zA-Z0-9\s'-]*$/;
+		const tasks: Task[] = JSON.parse(localStorage.getItem('tasks') || '[]')
 
+		const isTitleUnique: boolean = tasks.every(task => (task.title).toLowerCase() != (title.value).toLowerCase());
         const isTitleValid: boolean = nameRegex.test(title.value);
         const isNoteValid: boolean = note.value.length >= 5 && note.value.length <= 264;
 
-        setTitle({ ...title, error: !isTitleValid });
+        setTitle({ ...title, error: !isTitleValid || !isTitleUnique });
         setNote({ ...note, error: !isNoteValid });
+		if(!isTitleUnique) {
+			setHelper(2)
+		}
 
-        return isTitleValid && isNoteValid;
+        return isTitleUnique && isTitleValid && isNoteValid;
     };
 
 	const handleAddItem = () => {
@@ -61,7 +67,7 @@ const AddItem: React.FC = () => {
 					value={title.value}
 					setValue={(value: string) => setTitle({ value: value, error: false })}
 					error={title.error}
-					helper={'Invalid title format'}
+					helper={helper === 2 ? 'Title Already Exist, use another title' : 'Invalid title format'}
 				/>
 				<LongTextArea
 					label={"Note"}
